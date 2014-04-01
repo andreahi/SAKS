@@ -1,0 +1,22 @@
+from django.db import models
+
+# Create your models here.
+
+class Kunde(models.Model):
+    navn = models.charField(max_length=30)
+    fods_dato = models.DatetimeField('date published')
+    sprak1 = models.charField(max_length=30)
+    sprak2 = models.charField(max_length=30)
+
+
+    def __unicode__(self):
+        return self.navn
+
+from django import forms
+
+class CustomerForm(forms.Form):
+	name = forms.CharField(max_length=50)
+	birthdate = models.DatetimeField()
+	language = models.CharField()
+
+	

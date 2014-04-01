@@ -1,0 +1,54 @@
+'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load staticfiles %}
+<html>
+	<head>
+		<title>Rein</title>
+		<link rel="stylesheet" type="text/css" href="{% static "front/Publish/stylesheet.css" %}" />
+		<link href="SpryAssets/SpryAccordion.css" rel="stylesheet" type="text/css" />
+	<link href="SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
+</head>
+	<body>
+		<div class="container"> 
+			
+
+	<div class="userbar">
+				 <a href="/Norskkurs/loggut">Logg ut</a>
+			</div>
+		<div class="contentArea">
+				<ul class="leftnavigation">
+					<li><a href="/Norskkurs/newelev" >Legg til ny elev</a></li>
+					<li><a href="/Norskkurs/search" >Søk</a></li>
+					<li><a href="/Norskkurs/listall" >List alle elever</a></li>
+                     <li><a href="/Norskkurs/fravar" >Fravær</a></li>
+                     <li><a href="/Norskkurs/adminkurs" >Nytt kurs</a></li>
+                     <li><a href="/Norskkurs/adminlarer" >Ny Lærere</a></li>
+                     <li><a href="/Norskkurs/startkurs" >Start kurs</a></li>
+					<li><a href="/Norskkurs/listallekurs" >List alle kurs</a></li>
+
+					<li><a href="#" >Help</a></li>
+					<li></li>
+				</ul>
+				<div class="content">
+					<div class="contentleft">
+				{% block contentleft %}
+
+						<h1>Test Side2 </h1>
+						<p>Dette er en testside under utvikling. Eventuelle spørsmål eller annet som angår siden kan sendes til andreashi2@gmail.com </p>
+						<h1>Oppdateringer </h1>
+						<p>25.01.13 </p>
+						<p>Flyttet til ny IP (slutter å bruke domene)</p>
+						<p>Ny database satt opp </p>
+						<p>Nye modeller for lærere og kurs lagt til</p>
+					{% endblock %}	
+				  </div>
+				  
+					
+			  </div>
+				<div style="clear:both;"></div>
+		  </div>
+			<div class="footerArea">
+				<div class="copyright">&copy; 2014 CupiTech.  All rights reserved.</div>
+			</div>		
+		</div>
+	</body>
+</html>

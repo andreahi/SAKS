@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% extends "base.html" %}
+
+{% load staticfiles %}
+<html>
+	
+	<body>
+		<div class="container"> 
+			 <div class="contentArea">
+			 	  <div class="content">
+				  	   <div class="contentleft">
+					   {% block contentleft %}
+						<h1>Test Side1 </h1>
+                         <p>BRUKERNAVN: test </p>
+                        <p>PASSORD: test </p>
+						<p>Dette er en testside under utvikling. Eventuelle spørsmål eller annet som angår siden kan sendes til andreashi2@gmail.com </p>
+						<h1>Oppdateringer </h1>
+                        <p>01.02.13 </p>
+						<p>Nye fields på elev</p>
+<p>Lagt til mulighet for import/export av CSV via admin</p>
+
+<p>Lagt inn vedtak på brukere.</p>
+
+<p>Lagt grunnlag for å hente ut elever med en bestemt mengde fravær
+</p>
+						<p>27.01.13 </p>
+						<p>All tilgang bortsett fra denne siden skal nå kreve inlogging</p>
+						<p>Midlertidig brukernavn og passord; brukernavn: test, passord: test</p>
+						<p></p><p></p>
+						<p>25.01.13 </p>
+						<p>Flyttet til ny IP (slutter å bruke domene)</p>
+						<p>Ny database satt opp </p>
+						<p>Nye modeller for lærere og kurs lagt til.</p>
+						{% endblock %}	
+				  		</div>
+				  </div>
+			</div>
+		</div>
+	</body>
+</html>

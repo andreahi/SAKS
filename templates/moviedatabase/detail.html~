@@ -1,0 +1,7 @@
+<h1>{{ movie.title }}</h1>
+<ul>
+
+    <li>{{ movie.pub_date }}</li>
+
+    <li></li>
+</ul>

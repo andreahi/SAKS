@@ -1,0 +1,33 @@
+
+
+	
+	
+							                          
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% extends "base.html" %}
+{% load render_table from django_tables2 %}
+
+{% load staticfiles %}
+<html>
+	
+	<body>
+		<div class="container"> 
+			 <div class="contentArea">
+			 	  <div class="content">
+				  	   <div class="contentleft">
+					   {% block contentleft %}
+<h1>Fill in the form and press submit</h1>
+						<form method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+
+
+						{% endblock %}	
+				  		</div>
+				  </div>
+			</div>
+		</div>
+	</body>
+</html>
+	

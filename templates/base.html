@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load staticfiles %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>NASPN</title>
+
+	<link href="{% static "templatemo_style.css" %}"  type="text/css" rel="stylesheet" /> 
+	<script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script> 
+	<script type="text/javascript" src="{% static "js/jquery.scrollTo-min.js" %}"></script> 
+	<script type="text/javascript" src="{% static "js/jquery.localscroll-min.js" %}"></script> 
+	<script type="text/javascript" src="{% static "js/init.js" %}"></script> 
+    
+    <script type="text/JavaScript" src="{% static "js/slimbox2.js" %}"></script> 
+	<script src="http://yui.yahooapis.com/3.14.1/build/yui/yui-min.js"></script>
+
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">	 
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({ dateFormat: "dd.mm.yy" });
+    $( "#datepicker" ).datepicker();
+    $( "#datepicker2" ).datepicker({ dateFormat: "dd.mm.yy" });
+    $( "#datepicker2" ).datepicker();
+    $( "#datepicker3" ).datepicker({ dateFormat: "dd.mm.yy" });
+    $("#datepicker3" ).datepicker();
+  });
+
+    function goBack()
+    {
+        window.history.back()
+    }
+    </script>
+	<!-- Timestamp: 1236819900 --> 
+</head> 
+<body>
+
+{% if request.user.username %}
+
+<div id="demo-horizontal-menu" class = "right">
+    <ul id="std-menu-items">
+        <li>
+            <a href="#">Hei {{request.user.first_name}}</a>
+            <ul>
+                <li><a href="/Norskkurs/loggut">Logg ut</a></li>
+                <li><a href="#">Instillinger</a></li>
+                <li><a href="#">Om</a></li>
+                
+            </ul>
+        </li>
+    </ul>
+</div>
+{% endif %}
+<script>
+YUI({
+    classNamePrefix: 'pure'
+}).use('gallery-sm-menu', function (Y) {
+
+    var horizontalMenu = new Y.Menu({
+        container         : '#demo-horizontal-menu',
+        sourceNode        : '#std-menu-items',
+        orientation       : 'horizontal',
+        hideOnOutsideClick: false,
+        hideOnClick       : false
+    });
+
+    horizontalMenu.render();
+    horizontalMenu.show();
+
+});
+</script>
+
+<div id="templatemo_header">
+
+    <div id="site_title"><a href="/Norskkurs/index"><span>NASPN</span></a>
+			<div class = "right">
+			<FORM>
+<img type="image" value="Back" alt="Submit" src = "{% static "images/backhistory.png" %}"  onclick="history.back();">
+
+<a href="/Norskkurs/index"><img src= "{% static "images/home.png" %}" alt="Services" /></a>
+<img type="image" value="Back" alt="Submit" src = "{% static "images/forwardhistory.png" %}"  onclick="history.forward();">
+</FORM>
+
+
+</div>
+</div>
+
+</div>
+
+ <div class = "center">	
+
+        {% block contentleft %}
+
+			<div class="box home_box2 color1">
+            	<div class="padding_0">
+                    <h2><a href="#about">Nyheter</a></h2>
+					Fravær er lagt til og mulighet for å legge til nye vedtak. Alt på siden skal nå være på norsk, inkludert datoformater og div meldinger.
+				</div>
+            </div>
+            
+            <div class="box home_box1 color8">
+            	<a href="/Norskkurs/registrerfravar"><img src= "{% static "images/fravar.jpg" %}" alt="Services" /></a>
+            </div>
+            
+            <div class="box home_box1 color8">
+            	<a href="/Norskkurs/listall"><img src= "{% static "images/listalle.png" %}" alt="Services" /></a>
+            </div>
+            
+            <div class="box home_box1 color2">
+            	<a href="/admin"><img src= "{% static "images/templatemo_services.jpg" %}" alt="Services" /></a>
+            </div>
+            
+          <div class="box home_box1 color8">
+            	<a href="/Norskkurs/newelev"><img src= "{% static "images/nydeltager.png" %}" alt="Services" /></a>
+            </div>
+            
+            <div class="box home_box1 color4">
+            	
+            </div>
+            
+            <div class="box home_box1">
+                <a href="#portfolio"><img src="{% static "images/gallery/05.jpg" %}" alt="image 5" /></a>
+            </div>
+            
+            <div class="box home_box1 color5 no_mr">
+            	<a href="/Norskkurs/nyttvedtak"><img src="{% static "images/contact.jpg" %}" alt="Contact" /></a>
+            </div>
+             	{% endblock %}	  
+				
+    </div> 
+
+<div id="templatemo_footer">
+    <p>Copyright © 2013 SINAN | </p>
+</div>
+
+</body> 
+<script type='text/javascript' src='js/logging.js'></script>
+</html>

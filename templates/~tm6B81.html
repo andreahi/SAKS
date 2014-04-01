@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load staticfiles %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>NASPN</title>
+
+	<link href="{% static "templatemo_style.css" %}"  type="text/css" rel="stylesheet" /> 
+	<script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script> 
+	<script type="text/javascript" src="{% static "js/jquery.scrollTo-min.js" %}"></script> 
+	<script type="text/javascript" src="{% static "js/jquery.localscroll-min.js" %}"></script> 
+	<script type="text/javascript" src="{% static "js/init.js" %}"></script> 
+    
+    <link rel="stylesheet" href="css/slimbox2.css" type="text/css" media="screen" /> 
+    <script type="text/JavaScript" src="{% static "js/slimbox2.js" %}"></script> 
+
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">	 
+	<!-- Timestamp: 1236819900 --> 
+</head> 
+<body ccID="1034"> 
+<div ccID="1043" id="templatemo_header">
+<div ccID="1073" class="right">
+
+
+
+{% if request.user.username %}
+Hei {{request.user.first_name}}
+
+<select ccID="1167" name="forma" onchange="location = this.options[this.selectedIndex].value;" width="20"  style="width: 20px">
+ <option ccID="1285" value="instillinger">instillinger</option>
+ <option ccID="1338" value="loggut">Logg ut</option>
+</select>
+{% endif %}
+			</div>
+    <div ccID="1418" id="site_title"><a ccID="1439" href="/Norskkurs/index"><span ccID="1466">NASPN</span></a></div>
+		
+</div>
+<div ccID="1508" id="templatemo_main">
+    <div ccID="1540" id="content"> 
+		<div ccID="1563" id="home" class="section">
+        {% block contentleft %}
+<div ccID="1629" id="demo-horizontal-menu">
+    <ul ccID="1666" id="std-menu-items">
+        <li ccID="1700" class="pure-menu-selected"><a ccID="1731" href="#">Flickr</a></li>
+        <li ccID="1768"><a ccID="1772" href="#">Messenger</a></li>
+        <li ccID="1812"><a ccID="1816" href="#">Sports</a></li>
+        <li ccID="1853"><a ccID="1857" href="#">Finance</a></li>
+        <li ccID="1895">
+            <a ccID="1913" href="#">Other</a>
+            <ul ccID="1948">
+                <li ccID="1970" class="pure-menu-heading">More from Yahoo!</li>
+                <li ccID="2039" class="pure-menu-separator"></li>
+                <li ccID="2094"><a ccID="2098" href="#">Autos</a></li>
+                <li ccID="2142"><a ccID="2146" href="#">Flickr</a></li>
+                <li ccID="2191"><a ccID="2195" href="#">Answers</a></li>
+                <li ccID="2241">
+                    <a ccID="2267" href="#">Even More</a>
+                    <ul ccID="2314">
+                        <li ccID="2344"><a ccID="2348" href="#">Horoscopes</a></li>
+                        <li ccID="2405"><a ccID="2409" href="#">Games</a></li>
+                        <li ccID="2461"><a ccID="2465" href="#">Jobs</a></li>
+                        <li ccID="2516"><a ccID="2520" href="#">OMG</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+			<div ccID="2652" class="box home_box2 color1">
+            	<div ccID="2701" class="padding_30">
+                    <h2 ccID="2747"><a ccID="2751" href="#about">Nyheter</a></h2>
+                    <p ccID="2806">Ny funksjonalitet for å importere og exportere data er nå lagt inn. Med støtte for en bred variant av formater </p>
+				</div>
+            </div>
+            
+            <div ccID="2987" class="box home_box1 color9 no_mr">
+               <h2 ccID="3044"> <a ccID="3049" href="#testimonial"> Fravær</a> </h2>
+            </div>
+            
+            <div ccID="3138" class="box home_box1 color8">
+	        	<div ccID="3184" class="padding_20">
+                	<h2 ccID="3227"><a ccID="3231" href="/Norskkurs/listall">List alle deltagere</a></h2>
+                    <p ccID="3310"></p>
+                </div>
+            </div>
+            
+            <div ccID="3389" class="box home_box1 color2">
+            	<a ccID="3438" href="#services"><img ccID="3458" src= "{% static "images/templatemo_services.jpg" %}" alt="Services" /></a>
+            </div>
+            
+            <div ccID="3585" class="box home_box1 color7 no_mr">
+	        	<div ccID="3637" class="padding_20">
+                	<h2 ccID="3680"><a ccID="3684" href="/Norskkurs/newelev">Registrer Ny Deltager</a></h2>
+                    <p ccID="3765"></p>
+                </div>
+            </div>
+            
+            <div ccID="3844" class="box home_box1 color4">
+            	
+            </div>
+            
+            <div ccID="3941" class="box home_box1">
+                <a ccID="3986" href="#portfolio"><img ccID="4007" src="{% static "images/gallery/05.jpg" %}" alt="image 5" /></a>
+            </div>
+            
+            <div ccID="4123" class="box home_box1 color5 no_mr">
+            	<a ccID="4178" href="#contact"><img ccID="4197" src="{% static "images/contact.jpg" %}" alt="Contact" /></a>
+            </div>
+             	{% endblock %}	  
+        </div> <!-- END of home -->
+        
+        <div ccID="4372" class="section section_with_padding" id="about"> 
+            <h2 ccID="4440">About Our Company</h2>
+            <div ccID="4480" class="img_border img_fl"> <a ccID="4512" href="#"><img ccID="4524" src="{% static "images/templatemo_image_01.jpg" %}" alt="image 1" /></a>	
+          </div>
+            <div ccID="4634" class="half right">
+                <p ccID="4676">Credit goes to <a ccID="4694" href="http://www.photovaco.com" rel="nofollow">PhotoVaco</a> for photos used in this template. Validate <a ccID="4801" href="http://validator.w3.org/check?uri=referer" rel="nofollow">XHTML</a> &amp; <a ccID="4884" href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow">CSS</a>. Pellentesque non est quis sapien tempor consequat. Proin a ullamcorper enim.</p>
+                <p ccID="5065">Vultricies, tellus sit amet adipiscing sagittis, odio felis porta erat, hendrerit laoreet est nulla at enim. Vestibulum ut metus et ligula fermentum ultrices. Donec non rhoncus felis. Fusce vitae porta felis. Nam sed rhoncus lorem. Nam varius pretium enim id interdum. Curabitur tincidunt placerat justo eget fermentum.</p>
+            </div>
+            <div ccID="5425" class="clear h40"></div>
+            <div ccID="5468" class="img_border img_fr"> <a ccID="5500" href="http://www.templatemo.com/page/1" target="_parent" rel="nofollow"><img ccID="5575" src="images/templatemo_image_02.jpg" alt="image 2" /></a>	
+          </div>
+			<div ccID="5661" class="half left">                
+            	<p ccID="5715"><em ccID="5718">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam mauris ipsum, pulvinar sit amet varius at, placerat ut felis.</em></p>
+            	<p ccID="5903">Donec vitae tortor non ipsum tristique condimentum ac ac nulla. Etiam sagittis iaculis dolor ut euismod. Nam faucibus, risus at consequat malesuada, urna turpis sagittis libero, sodales hendrerit dui arcu et nisi. Praesent pulvinar, dolor id lacinia pulvinar, mi ligula tempor libero, et semper sem dolor et elit. </p>
+            </div>
+
+            <a ccID="6260" href="#home" class="slider_nav_btn home_btn">home</a> 
+            <a ccID="6331" href="#home" class="slider_nav_btn previous_btn">Previous</a>
+            <a ccID="6409" href="#services" class="slider_nav_btn next_btn">Next</a> 
+
+        </div> 
+        
+        <div ccID="6509" class="section section_with_padding" id="services"> 
+            <h2 ccID="6580">Services</h2>
+            
+            <div ccID="6625" class="img_border img_fr"> <a ccID="6657" href="#"><img ccID="6669" src="images/templatemo_image_01.jpg" alt="image" /></a>	
+          </div>
+			<div ccID="6753" class="half left">                
+            	<p ccID="6807"><em ccID="6810">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam mauris ipsum, pulvinar sit amet varius at, placerat ut felis.</em></p>
+            	<p ccID="6995">Donec vitae tortor non ipsum tristique condimentum ac ac nulla. Etiam sagittis iaculis dolor ut euismod. Nam faucibus, risus at consequat malesuada, urna turpis sagittis libero, sodales hendrerit dui arcu et nisi. Praesent pulvinar, dolor id lacinia pulvinar, mi ligula tempor libero, et semper sem dolor et elit. </p>
+            </div>
+            
+            <div ccID="7364" class="clear h40"></div>
+            
+            <div ccID="7421" class="img_border img_fl"> <a ccID="7453" href="#"><img ccID="7465" src="images/templatemo_image_02.jpg" alt="image" /></a>	
+          </div>
+            <div ccID="7558" class="half right">
+                <ul ccID="7600" class="list_bullet">
+                    <li ccID="7646">Maecenas ac odio ipsum donec cursus</li>
+                    <li ccID="7712">Fusce risus tortor, interdum</li>
+                    <li ccID="7771">Proin facilisis ullamcorper</li>
+                    <li ccID="7829">Sed vel justo quis ligula</li>
+                    <li ccID="7885">Ut tristique sagittis arcu</li>
+                    <li ccID="7942">Maecenas ac odio ipsum donec cursus</li>
+                    <li ccID="8008">Fusce risus tortor, interdum</li>
+                 </ul>
+            </div>
+            
+             <a ccID="8118" href="#home" class="slider_nav_btn home_btn">home</a> 
+         	<a ccID="8187" href="#about" class="slider_nav_btn previous_btn">Previous</a>
+            <a ccID="8266" href="#portfolio" class="slider_nav_btn next_btn">Next</a>
+
+
+
+        </div> 
+        <div ccID="8360" class="section section_with_padding" id="portfolio"> 
+            <ul ccID="8432" id="gallery">
+                <li ccID="8467"><a ccID="8471" href="images/gallery/01-l.jpg" rel="lightbox[gallery]"><img ccID="8529" src="images/gallery/01.jpg" alt="image 1" /></a></li>
+                <li ccID="8605"><a ccID="8609" href="images/gallery/02-l.jpg" rel="lightbox[gallery]"><img ccID="8667" src="images/gallery/02.jpg" alt="image 2" /></a></li>
+                <li ccID="8743" class="no_mr"><a ccID="8761" href="images/gallery/03-l.jpg" rel="lightbox[gallery]"><img ccID="8819" src="images/gallery/03.jpg" alt="image 3" /></a></li>
+                <li ccID="8895"><a ccID="8899" href="images/gallery/04-l.jpg" rel="lightbox[gallery]"><img ccID="8957" src="images/gallery/04.jpg" alt="image 4" /></a></li>
+                <li ccID="9033"><a ccID="9037" href="images/gallery/05-l.jpg" rel="lightbox[gallery]"><img ccID="9095" src="images/gallery/05.jpg" alt="image 5" /></a></li>
+                <li ccID="9171" class="no_mr"><a ccID="9189" href="images/gallery/06-l.jpg" rel="lightbox[gallery]"><img ccID="9247" src="images/gallery/06.jpg" alt="image 6" /></a></li>
+                <li ccID="9323"><a ccID="9327" href="images/gallery/07-l.jpg" rel="lightbox[gallery]"><img ccID="9385" src="images/gallery/07.jpg" alt="image 7" /></a></li>
+                <li ccID="9461"><a ccID="9465" href="images/gallery/08-l.jpg" rel="lightbox[gallery]"><img ccID="9523" src="images/gallery/08.jpg" alt="image 8" /></a></li>                
+                <li ccID="9615" class="no_mr"><a ccID="9633" href="images/gallery/09-l.jpg" rel="lightbox[gallery]"><img ccID="9691" src="images/gallery/09.jpg" alt="image 9" /></a></li>
+            </ul>	
+
+            <a ccID="9785" href="#home" class="slider_nav_btn home_btn">home</a> 
+            <a ccID="9856" href="#services" class="slider_nav_btn previous_btn">Previous</a>
+            <a ccID="9938" href="#testimonial" class="slider_nav_btn next_btn">Next</a> 
+
+        </div> 
+        <div ccID="10031" class="section section_with_padding" id="testimonial"> 
+            <h2 ccID="10105">Testimonials</h2>
+            <div ccID="10140" class="clear h40"></div>
+            <div ccID="10183" class="half left">
+            	 <blockquote ccID="10222" class="testimonial_block">
+                <p ccID="10278">Fusce nec felis id lacus sollicitudin vulputate. Proin tincidunt, arcu id pellentesque accumsan, neque dolor imperdiet ligula. </p>
+                <cite ccID="10430">Neon - <span ccID="10443">Marketing Executive</span></cite> </blockquote>
+			</div>
+            <div ccID="10521" class="half right">
+                <blockquote ccID="10563" class="testimonial_block">
+            <p ccID="10615">Fusce nec felis id lacus sollicitudin vulputate. Proin tincidunt, arcu id pellentesque accumsan, neque dolor imperdiet ligula. </p>
+            <cite ccID="10763">George - <span ccID="10778">Executive Director</span></cite> </blockquote>
+			</div>
+            <div ccID="10855" class="clear h40"></div>
+            <div ccID="10898" class="half left">
+            	 <blockquote ccID="10937" class="testimonial_block">
+            <p ccID="10989">Fusce nec felis id lacus sollicitudin vulputate. Proin tincidunt, arcu id pellentesque accumsan, neque dolor imperdiet ligula. </p>
+            <cite ccID="11137">Walker - <span ccID="11152">Media Specialist</span></cite> </blockquote>
+			</div>
+            <div ccID="11227" class="half right">
+                 <blockquote ccID="11270" class="testimonial_block">
+            <p ccID="11322">Fusce nec felis id lacus sollicitudin vulputate. Proin tincidunt, arcu id pellentesque accumsan, neque dolor imperdiet ligula. </p>
+            <cite ccID="11470">Ronald - <span ccID="11485">Advertising Manager</span></cite> </blockquote>
+			</div>
+                    
+            <a ccID="11585" href="#home" class="slider_nav_btn home_btn">home</a> 
+            <a ccID="11656" href="#portfolio" class="slider_nav_btn previous_btn">Previous</a>
+            <a ccID="11739" href="#contact" class="slider_nav_btn next_btn">Next</a> 
+        </div> 
+        <div ccID="11826" class="section section_with_padding" id="contact"> 
+            <h2 ccID="11896">Contact</h2> 
+            <div ccID="11927" class="half left">
+                <h4 ccID="11968">Send oss en beskjed</h4>
+                <p ccID="12014">Er det noe du lurer på eller ønsker annerledes, send oss gjerne en beskjed.</p>
+                <div ccID="12116" id="contact_form">
+                    <form ccID="12161" method="post" name="contact" action="#contact">
+                        <div ccID="12240" class="left">
+                            <label ccID="12288" for="fullname">Name:</label> <input ccID="12324" name="fullname" type="text" class="required input_field" id="fullname" maxlength="30" />
+                        </div>
+                        <div ccID="12477" class="right">                           
+                            <label ccID="12553" for="email">Email:</label> <input ccID="12587" name="email" type="text" class="validate-email required input_field" id="email" maxlength="30" />
+                        </div>
+                        <div ccID="12749" class="clear"></div>
+                      <label ccID="12798" for="message">Message:</label> <textarea ccID="12836" id="message" name="message" rows="0" cols="0" class="required"></textarea>
+                        <input ccID="12946" type="submit" class="submit_btn float_l" name="submit" id="submit" value="Send" />
+                    </form>
+                </div>
+            </div>
+            
+            <div ccID="13136" class="half right">
+                <h4 ccID="13178">Adresse</h4>
+                Abveien 4 <br ccID="13222" />
+               	Andeby, 1120<br ccID="13258" />
+                
+                Email: andreashi2@gmail.com<br ccID="13327" />
+                
+                <div ccID="13369" class="clear h20"></div>
+                <div ccID="13416" class="img_nom img_border"><span ccID="13448"></span>
+                <iframe ccID="13479" width="340" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Central+Park,+New+York,+NY,+USA&amp;aq=0&amp;sll=14.093957,1.318359&amp;sspn=69.699334,135.263672&amp;vpsrc=6&amp;ie=UTF8&amp;hq=Kringsjå,+Oslo&amp;output=embed"></iframe></div><div ccID="13835" class="clear"></div>
+            </div>
+			<a ccID="13885" href="#home" class="slider_nav_btn home_btn">home</a> 
+            <a ccID="13956" href="#testimonial" class="slider_nav_btn previous_btn">Previous</a>
+            <a ccID="14041" href="#home" class="slider_nav_btn next_btn">Next</a> 
+        </div> 
+    </div> 
+</div>
+
+<div ccID="14140" id="templatemo_footer">
+    <p ccID="14174">Copyright © 2013 SINAN | </p>
+</div>
+
+</body> 
+<script ccID="14229" type='text/javascript' src='js/logging.js'></script>
+</html>

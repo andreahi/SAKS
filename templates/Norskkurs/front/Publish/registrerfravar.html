@@ -1,0 +1,58 @@
+
+
+						                          
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% extends "base.html" %}
+{% load render_table from django_tables2 %}
+
+{% load staticfiles %}
+<html>
+	
+	<body>
+		<div class="container"> 
+			 <div class="contentArea">
+			 	  <div class="content">
+				  	   <div class="contentleft">
+					   {% block contentleft %}
+
+					   					   <div id="templatemo_main">
+			<div class = "center">		   
+
+<form  method="post">{% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.elev.errors }}
+        <label for="id_elev">Elev:</label>
+        {{ form.elev }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.fravardato.errors }}
+        <label for="id_fravardato">dato:</label>
+					   					   <input type="text" id="datepicker" name = "fravardato">
+    </div>
+    <div class="fieldWrapper">
+        {{ form.timer.errors }}
+        <label for="id_timer">Timer:</label>
+        {{ form.timer }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.kurs.errors }}
+        <label for="id_kurs">kurs</label>
+        {{ form.kurs }}
+    </div>
+
+    <p><input type="submit" value="Lagre" /></p>
+</form>
+	   
+
+				  		</div>
+				  		</div>
+
+						{% endblock %}	
+				  		</div>
+				  </div>
+			</div>
+		</div>
+	</body>
+</html>
+	
