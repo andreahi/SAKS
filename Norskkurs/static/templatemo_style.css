@@ -1,8 +1,25 @@
 /* Credit: http://www.templatemo.com */
+searchForm {
+    display: inline-block;
+}
+
 .center
 {
 margin: 0 auto;
-width: 50%;
+width: 100%;
+/*background-color:#b0e0e6;*/
+}
+
+.layout_nydeltager
+{
+margin: 0 auto;
+width: 700px;
+/*background-color:#b0e0e6;*/
+}
+.layout_front
+{
+margin: 0 auto;
+width: 900px;
 /*background-color:#b0e0e6;*/
 }
 .right

@@ -11,7 +11,35 @@
 	<body>
 					   {% block contentleft %}
  <div class = "center">	
+
+<script>
+YUI({
+    classNamePrefix: 'pure'
+}).use('gallery-sm-menu', function (Y) {
+
+    var horizontalMenu = new Y.Menu({
+        container         : '#rapport-menu',
+        sourceNode        : '#std-menu-items',
+        orientation       : 'horizontal',
+        hideOnOutsideClick: false,
+        hideOnClick       : false
+    });
+
+    horizontalMenu.render();
+    horizontalMenu.show();
+
+});
+</script>
  				       <div id="tableview"> 
+ <div id="rapport-menu">
+    <ul id="std-menu-items">
+        <li class="pure-menu-selected"><a href="/Norskkurs/sok">Deltagelse</a></li>
+        <li><a href="/Norskkurs/statsborgerskap">Statsborgerskap</a></li>
+		<li><a href="/Norskkurs/opphold">Oppholdstillatelse</a></li>
+        <li><a href="/Norskkurs/listall">Elever</a></li>
+        
+    </ul>
+</div>
 
 					   <h2>Alle deltagere</h2>
 
@@ -19,10 +47,15 @@
 
 					      <form id="UserDisplayForm" method="post">{% csrf_token %}
 					   		 {{ form.as_table }}<input type="submit" value="Søk" />
+							 						{% render_table elev_list %}
+
+							 	 						<div class="pure-u-1-5">
+							<p></p>
+							 <input type="submit" class="pure-button pure-button-primary" name="adresser" value="Last ned adresser" />
+							</div>
 					   	  </form>
 						 											       </div> 
 
-						{% render_table elev_list %}
 					   </div>
 					   </div>
 

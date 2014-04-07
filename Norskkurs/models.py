@@ -45,13 +45,18 @@ class KursInstance(models.Model):
     sluttdato = models.DateField()
     elever = models.ManyToManyField("Elev", blank=True)
     def __unicode__(self):
-        return self.kurs.kursforkortelse + "("+str(self.startdato)+"-"+str(self.sluttdato)+")"
+        return self.kurs.kursforkortelse
+    
 
 class Elev(models.Model):
     rettighet = models.CharField(max_length=30)
     fornavn = models.CharField(max_length=30, editable = True)
     etternavn = models.CharField(max_length=30, blank=True, null=True)
-
+    def getnavn(self): return self.__navn
+    def setnavn(self, value): self.__navn = value
+    def delnavn(self): del self.__navn
+    navn = property(getnavn, setnavn, delnavn)
+    
     personnr = models.DecimalField(max_digits=11, decimal_places=0, blank=True, null=True)
     DUFnr = models.DecimalField(max_digits=11, decimal_places=0, blank=True, null=True)
 
@@ -76,15 +81,15 @@ class Elev(models.Model):
     #antall_timer = models.PositiveSmallIntegerField(blank=True, default=0,verbose_name = r'Timer fullfort')
     vedtak = models.ManyToManyField("Norsk_vedtak", blank=True, null = True)
     skolegang = models.CharField(max_length = 200, blank=True)
-    soketyper = (('oppholdstilatelse','oppholdstilatelse'), ('statsborgerskap ','statsborgerskap '))
+    soketyper = (('oppholdstilatelse','oppholdstilatelse'), ('statsborgerskap','statsborgerskap'))
     soker = models.CharField('Soker', max_length=20, blank=True, choices = soketyper)
     deltagerkategorier = (('Rett/plikt','Rett/plikt'), ('Rett ','Rett'), ('Plikt ','Plikt'), ('Betaling ','Betaling'))
-    deltagerkategori=models.CharField(max_length=10,blank=True, choices = deltagerkategorier)
+    deltagerkategori=models.CharField(max_length=20,blank=True, choices = deltagerkategorier)
 
     deltagerkategoriertid = (('Kveldsdeltagere','Kveldsdeltagere'), ('Dagdeltagere ','Dagdeltagere'))
 
-    deltagerkategoritid=models.CharField(r'Deltagerkategori (tid)',max_length=10,blank=True, choices = deltagerkategoriertid)
-
+    deltagerkategoritid=models.CharField(r'Deltagerkategori (tid)',max_length=20,blank=True, choices = deltagerkategoriertid)
+    morsmal  = models.CharField(max_length=20, blank = True)
     def __unicode__(self):
         return self.fornavn + " " + self.etternavn
     def get_aktivitet(self, obj):

@@ -93,11 +93,12 @@ YUI({
  <div class = "center">	
 
         {% block contentleft %}
+ <div class = "layout_front">	
 
 			<div class="box home_box2 color1">
             	<div class="padding_0">
                     <h2><a href="#about">Nyheter</a></h2>
-					Fravær er lagt til og mulighet for å legge til nye vedtak. Alt på siden skal nå være på norsk, inkludert datoformater og div meldinger.
+					Funksjonalitet rundt rapporter lagt til
 				</div>
             </div>
             
@@ -116,18 +117,18 @@ YUI({
           <div class="box home_box1 color8">
             	<a href="/Norskkurs/newelev"><img src= "{% static "images/nydeltager.png" %}" alt="Services" /></a>
             </div>
-            
             <div class="box home_box1 color4">
-            	
             </div>
             
-            <div class="box home_box1">
-                <a href="#portfolio"><img src="{% static "images/gallery/05.jpg" %}" alt="image 5" /></a>
+            <div class="box home_box1 color2">
+            	<a href="/Norskkurs/sok"><img src= "{% static "images/sok.jpg" %}" alt="sok" /></a>
             </div>
             
             <div class="box home_box1 color5 no_mr">
             	<a href="/Norskkurs/nyttvedtak"><img src="{% static "images/contact.jpg" %}" alt="Contact" /></a>
             </div>
+	</div> 
+
              	{% endblock %}	  
 				
     </div> 

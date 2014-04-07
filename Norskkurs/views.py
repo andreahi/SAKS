@@ -23,10 +23,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.db.models import Count, Min, Sum, Avg
 import django_tables2 as tables
-
+from django import forms
 from django.forms.extras.widgets import SelectDateWidget
 from django.db.models import Q
-
+from django.http import HttpResponse
+import csv
 
 from django_tables2.utils import A
 
@@ -34,11 +35,12 @@ class ElevForm(ModelForm):
     class Meta:
         model = Elev
         exclude = ['rettighet', 'RPNo','s50','NBeh']
+    skolegang = forms.CharField(widget=forms.Textarea(), required = False)
 
 class ElevTable(tables.Table):
     class Meta:
         model = Elev
-        exclude = ['id','RPNo','s50','NBeh','postnummer']
+        exclude = ['id','RPNo','s50','NBeh','postnummer','skolegang','rettighet']
     fornavn = tables.LinkColumn('detail', args=[A('pk')])
         
 class KursForm(ModelForm):
@@ -75,6 +77,12 @@ class FravarTable(tables.Table):
     class Meta:
         model = Fravar
         exclude = ['elev','id']
+
+ 
+class FravarTableL(tables.Table):
+    class Meta:
+        model = Fravar
+        exclude = ['id']
 
 class VedtakTable(tables.Table):
     class Meta:
@@ -227,6 +235,7 @@ def startkurs(request):
 
 class SearchForm(forms.Form):
     navn = forms.CharField(max_length=100, required=False,label='')
+    
 
 
 @login_required
@@ -258,7 +267,15 @@ def listall(request):
             # ...
             name_s = form.cleaned_data['navn']
             res = Elev.objects.all().filter( Q(fornavn__icontains=name_s) | Q(etternavn__icontains=name_s) | Q(bostedsadresse__icontains=name_s) |Q(sted__icontains=name_s))
-            elev_list = ElevTable(res)    
+            elev_list = ElevTable(res)
+            if 'adresser' in request.POST:
+                    response = HttpResponse(content_type='text/csv')
+                    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+                    writer = csv.writer(response)
+                    writer.writerow(['navn', 'adresse', 'postnummer', 'by'])
+                    for e in res:
+                        writer.writerow([e.fornavn,e.bostedsadresse,e.postnummer, e.sted])
+                    return response
     else:
         form = SearchForm() # An unbound form
         
@@ -267,6 +284,84 @@ def listall(request):
 
     return render_to_response('Norskkurs/front/Publish/listall.html',
     {'elev_list':elev_list, 'form':form}, context_instance=RequestContext(request))
+import time
+from datetime import date, timedelta
+
+
+from datetime import datetime
+def getTimeLastWeek():
+    return date.today()-timedelta(days=7)
+
+def getTimeNow():
+    return time.strftime("%d.%m.%Y")
+class RaportChoiceForm(forms.Form):
+    CHOICES = (('Elever', 'Elever',), ('Kurs', 'Kurs',))
+    #elev_eller_kurs= forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES)
+    #kurs = forms.ChoiceField(choices = [('', '---')] + [(c, c) for c in KursInstance.objects.all()], required =False)
+    kurs = forms.ModelChoiceField(queryset=KursInstance.objects.all(), required = False)
+    elev = forms.CharField(required = False)
+    fra_dato = forms.DateField(widget=forms.TextInput(attrs={'id': 'datepicker2','format' :'%d.%m.%Y'}), initial = getTimeLastWeek, required = False)
+    til_dato = forms.DateField(widget=forms.TextInput(attrs={'id': 'datepicker','format' :'%d.%m.%Y'}), initial=getTimeNow, required = False)
+
+@login_required
+def sok(request):
+    res = None
+    elev_list = []
+    if request.method == 'POST': # If the form has been submitted...
+        form = RaportChoiceForm(request.POST) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+
+            # Process the data in form.cleaned_data
+            # ...
+            kurs = form.cleaned_data['kurs']
+            elev = form.cleaned_data['elev']
+            fradato = form.cleaned_data['fra_dato']
+            tildato = form.cleaned_data['til_dato']
+            q = Q(elev__fornavn__icontains =elev)
+            if kurs:
+                q &= Q(kurs__kursforkortelse__icontains=kurs)
+            q &= Q(fravardato__range=[fradato,tildato])
+            res = Fravar.objects.all().filter(q)
+            elev_list = FravarTableL(res)
+
+           
+            
+    else:
+        form = RaportChoiceForm() # An unbound form
+        
+    if elev_list:
+        RequestConfig(request, paginate={"per_page": 6}).configure(elev_list)
+
+        return render_to_response('Norskkurs/front/Publish/sok.html',
+                {'elev_list':elev_list, 'form':form}, context_instance=RequestContext(request))
+    
+    return render_to_response('Norskkurs/front/Publish/sok.html',
+    { 'form':form}, context_instance=RequestContext(request))
+
+@login_required
+def statsborgerskap(request):
+    res = None
+    elev_list = ElevTable(Elev.objects.all())
+    res = Elev.objects.all().filter( Q(soker__icontains="statsborgerskap"))
+    elev_list = ElevTable(res)
+    RequestConfig(request, paginate={"per_page": 6}).configure(elev_list)
+
+
+    return render_to_response('Norskkurs/front/Publish/statsborgerskap.html',
+                {'elev_list':elev_list}, context_instance=RequestContext(request))
+    
+@login_required
+def opphold(request):
+    res = None
+    elev_list = ElevTable(Elev.objects.all())
+    res = Elev.objects.all().filter( Q(soker__icontains="opphold"))
+    elev_list = ElevTable(res)
+    RequestConfig(request, paginate={"per_page": 6}).configure(elev_list)
+
+
+    return render_to_response('Norskkurs/front/Publish/statsborgerskap.html',
+                {'elev_list':elev_list}, context_instance=RequestContext(request))
+
 
 @login_required
 def listallekurs(request):

@@ -24,8 +24,8 @@ urlpatterns = patterns('',
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     url(r'^Norskkurs/listallekurs$', 'Norskkurs.views.listallekurs'),
     url(r'^Norskkurs/instillinger$', 'Norskkurs.views.instillinger'),
-    url(r'^Norskkurs/nyttvedtak$', 'Norskkurs.views.nyttvedtak')
-
-
-
+    url(r'^Norskkurs/sok$', 'Norskkurs.views.sok'),
+    url(r'^Norskkurs/statsborgerskap$', 'Norskkurs.views.statsborgerskap'),
+    url(r'^Norskkurs/nyttvedtak$', 'Norskkurs.views.nyttvedtak'),
+    url(r'^Norskkurs/opphold', 'Norskkurs.views.opphold')
 )

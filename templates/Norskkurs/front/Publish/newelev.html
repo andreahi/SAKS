@@ -13,61 +13,108 @@
 					   {% block contentleft %}
 
 					   
-			<div class = "center">		   
+			<div class = "center">		
+			<div class = "layout_nydeltager">		   
+   
 		<h2> Registrer ny deltager </h2>
 <form class="pure-form pure-form-stacked" method="post">
                         {% csrf_token %}
 
     {{ form.non_field_errors }}
-	<div class="pure-u-1-3">
+	<div class="pure-u-1-4">
     <div class="fieldWrapper">
 
         <label>Fornavn: {{form.fornavn.errors.as_text}}</label>
         {{ form.fornavn }}
     </div>
 	 </div>
-	<div class="pure-u-1-3">
+	<div class="pure-u-1-4">
     <div class="fieldWrapper">
         
         <label >Etternavn: {{ form.etternavn.errors.as_text }}</label>
         {{ form.etternavn }}
     </div>
 	    </div>
-	<div class="pure-u-1-3">
+	<div class="pure-u-1-4">
     <div class="fieldWrapper">
         <label>Personnummer: {{form.personnr.errors.as_text}}</label>
         {{ form.personnr }}
     </div>
 	    </div>
 		
-	<div class="pure-u-1-3">
+	<div class="pure-u-1-4">
     <div class="fieldWrapper">
         <label>DUF-nummer {{ form.DUFnr.errors.as_text }}</label>
         {{ form.DUFnr }}
     </div>
 	    </div>
-	<div class="pure-u-1-3">
+		
+		<div class="pure-u-1-2">
+    <div class="fieldWrapper">
+        <label>Morsmål: {{ form.morsmal.errors.as_text }}</label>
+        {{ form.morsmal }}
+    </div>
+	    </div>
+	<div class="pure-u-1-4">
 	    <div class="fieldWrapper">
         
         <label>Adresse: {{ form.bostedsadresse.errors.as_text }}</label>
         {{ form.bostedsadresse }}
     </div>
 	</div>
-	<div class="pure-u-1-3">
+	<div class="pure-u-1-4">
 	    <div class="fieldWrapper">
         
         <label>Sted: {{ form.sted.errors.as_text }}</label>
         {{ form.sted }}
     </div>
 	    </div>
+		
+		
+	<div class="pure-u-1-4">
 
 	    <div class="fieldWrapper">
         
         <label">Postnummer: {{ form.postnummer.errors.as_text }}</label>
         {{ form.postnummer }}
+    </div>	  
+	  </div>
+
+
+		<div class="pure-u-1-4">
+ <div class="fieldWrapper">
+        
+        <label">Deltagerkategori(tid): {{ form.deltagerkategoritid.errors.as_text }}</label>
+        {{ form.deltagerkategoritid }}
+     </div>
+	</div>
+			<div class="pure-u-1-4">
+ <div class="fieldWrapper">
+        
+        <label">Deltagerkategori: {{ form.deltagerkategori.errors.as_text }}</label>
+        {{ form.deltagerkategori }}
+     </div>
+	</div>
+	
+			<div class="pure-u-1-3">
+ <div class="fieldWrapper">
+        
+        <label">Søker: {{ form.soker.errors.as_text }}</label>
+        {{ form.soker }}
+     </div>
+	</div>
+	
+	
+		<div class="pure-u-1-1">
+ <div class="fieldWrapper">
+        
+        <label">Skolegang: {{ form.skolegang.errors.as_text }}</label>
+        {{ form.skolegang }}
     </div>
 
-
+</div>
+	
+	
 		<div class="pure-u-1-3">
 		
      <p> <p><p><input type="submit" value="Legg til deltager" class="pure-button pure-button-primary" /></p></p></p>
@@ -75,6 +122,8 @@
 
 </form>
 	</div>
+		</div>
+
 						{% endblock %}	
 	
 	</body>
